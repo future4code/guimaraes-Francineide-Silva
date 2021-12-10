@@ -1,0 +1,22 @@
+1-Faça um resumo sobre quais são os 7 passos fundamentais para 
+a resolução de problemas e como eles podem nos ajudar a 
+solucionar nossos desafios de programação.
+
+1- precisamos presta atenção no que o cliente ou enunciado,
+ler com calma ou presta atenção no que o cliente fala 
+
+2- pegando as palavras chaves estrando o maximo do cliente ou 
+enuciado
+
+3-Pensar nos dados que preciso coletar para ter a resposta necessaria
+
+4- Colocar no papel e forma de diagrama tudo que se vai fazer tento enxegar 
+de forma clara e simples toda a rotina que precisa ser seguida
+
+5- Criar um rabisco do codigo
+
+6- Testa se a ideia colocada em codigo funciona e força o maximo para encontar
+falhas
+
+7- reformular o codigo de forma mais apresentavel e com boas praticas.
+
