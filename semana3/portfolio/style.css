@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+img{
+    display: block;
+    max-width: 20%;
+
+}
+
+li{
+    list-style: none;
+
+}
+
+.container-links{
+
+    display: flex;
+    flex-direction:column;
+    justify-content: center
+}
+
+body{
+    font-family: 'Source Code Pro', monospace;
+    background: url("./img/amb\ traba.jpg") no-repeat top center;
+    background-attachment: fixed; 
+    background-size: cover ;
+    display: grid;
+    align-items:flex-start;
+    justify-items:left;
+    height: 100vh;
+
+
+}
+
+.texto-menu{
+    font-size: 20px;
+    width: 50%;
+    padding: 2px;
+}
+
+
+.profile-pic{
+    border-radius: 50% ;
+    margin:0 auto 2rem auto;
+
+}
+
+.profile span{
+    font-size: 24px;
+}
+
+.profile p{
+    font-size: 18px;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+
+}
+
+.rede-sociais{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    
+}
+.rede-sociais li{
+    margin-right: 1rem;
+}
+
+.rodape{
+    font-size: 18px;
+
+
+}
