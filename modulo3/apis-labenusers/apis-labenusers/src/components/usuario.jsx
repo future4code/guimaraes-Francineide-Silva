@@ -1,88 +1,83 @@
 import axios from 'axios';
 import React  from 'react';
-import Cadastro from './cadastro';
+import Styled from 'styled-components';
 
-const urlCadastro = axios.get('https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users', {
-    headers: {
-        Authorization: "francineide-silva-guimaraes" }
-        })
 
-class Usuario extends React.Component {
- state = {
-    usuarios: []
-  }
+const CardUsuario = Styled.div`
+  border: 1px solid black;
+  margin: 10px;
+  padding: 10px;
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+`;
+
+ class Usuario extends React.Component {
+  state = {
+    lista: [],
+  };
 
   componentDidMount() {
-    urlCadastro.then(response => {
-      this.setState({
-        usuarios: response.data
-      })
-      .catch(error => {
-        console.log (error.message)
-    })
-  })
+    this.pegaUsuarios();
   }
 
-  createCadastro() {
-    const body = {
-      name: this.state.nameInput,
-      email: this.state.emailInput,
-  }
-  axios.post('https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users', body, {
-      headers: {
-          Authorization: 'francineide-silva-guimaraes'
+  pegaUsuarios = async () => {
+      try {
+        const url =
+        "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users";
+      const headers = {
+        headers: {
+          Authorization: "francineide-silva-guimaraes",
+        },
+      };
+
+      const response = await axios.get(url, headers)
+      this.setState({lista: response.data})
+      } catch(error){
+        console.log(error.response.data.message)
+
       }
-  })
-  .then(response => {
-      console.log(response.data)
-      alert('Usuário cadastrado com sucesso')
-      this.setState({ nameInput: '', emailInput: '' })
-      this.getUserByld()
-  })
-  .catch(error => {
-      console.log(error.message)
-  })
-  }
+  
 
-onChangeinputUsuario(event) {
-    this.setState({ nameInput: event.target.value })
-  }
-  onChangeinputEmail(event) {
-    this.setState({ emailInput: event.target.value })
-  }
-  nextPage() {
-    this.props.history.push(<Usuario />)
-  }
+    
+  };
+
+  deleteUsuario = async (id) => {
+      try {
+        const url = `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id} `;
+        const headers = {
+          headers: {
+            Authorization: "francineide-silva-guimaraes",
+          },
+        };
+        await axios.delete(url, headers)
+        alert("usuário deletado")
+        this.pegaUsuarios()
+      } catch (err) {
+        alert(err.response.data.message)
+      }
+  
+    
+  };
+
   render() {
-    const cadastroComponent = this.state.usuarios.map(usuario => {
-      return <li key ={usuario.id}> {usuario.name}
-      {usuario.email}
-      </li>
-    })
+    const listaUsuarios = this.state.lista.map((user) => {
+      return (
+        <CardUsuario key={user.id}>
+          <p>{user.name}</p>
+          <button onClick={() => this.deleteUsuario(user.id)}>X</button>
+        </CardUsuario>
+      );
+    });
 
     return (
-      <div className="App">
-          <h1>Cadastro de Usuários</h1>
-        <div>
-          <input
-            type="text"
-            placeholder="Nome"
-            value={this.state.nameInput}
-            onChange={(event) => this.onChangeinputUsuario(event)}
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            value={this.state.emailInput}
-            onChange={(event) => this.onChangeinputEmail(event)}
-          />
-          <button onClick={() => this.createCadastro()}>Cadastrar</button>
-        </div>
-        <div>
-          <button onClick={() => this.nextPage()}>Próxima página</button>
-        </div>
+      <div>
+        <p>Lista Usuario</p>
+        <button onClick={this.props.irParaCadastro}>Ir para Cadastro</button>
+        {listaUsuarios}
       </div>
     );
   }
 }
+
 export default Usuario;
