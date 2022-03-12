@@ -45,6 +45,7 @@ const CardFooters = Styled.footer`
   margin: 0;
   
 
+
 `;
 const footSecundario = Styled.div `
   display: flex;
@@ -52,11 +53,12 @@ const footSecundario = Styled.div `
   justify-content: space-around;
   align-items: flex-end;
 
+
 `
 
 const CardRedeSocial = Styled.img`
   width: 10%;
-  padding-top: 1%;
+  padding-top: 5%;
   padding-right: 2%;
   padding-left: 5%;
   margin: 0;
@@ -65,7 +67,9 @@ const CardRedeSocial = Styled.img`
 
 const TextoFoot= Styled.h2 `
   color: black;
-
+  display: flex;
+  flex-direction: column;
+  
 `
 
 class App extends React.Component {
@@ -95,12 +99,15 @@ class App extends React.Component {
         )}
         <CardFooters>
           <br/>
-         <TextoFoot>© 2021 Labefy - Seu App de Música <br/> Rua dos Bobos, 0 - Esmero, PB - 00000-000</TextoFoot>
+         <TextoFoot>© 2021 Labefy - Seu App de Música 
+           
+            Rua dos Bobos, 0 - Esmero, PB - 00000-000</TextoFoot>
         <br/>
           <a href="https://www.facebook.com" target="_blank"><CardRedeSocial src={Facebook}  alt="facebook" /></a>
           <a href="https://www.instagram.com" target="_blank"><CardRedeSocial src={Instagram} alt="instagram" /></a>
           <a href="https://www.twitter.com" target="_blank"><CardRedeSocial src={Twitter} alt="twitter" /></a>
           <footSecundario>
+                     
           <a class="nav-link" target="_blank" href="./index.html">quem somos</a>
           <br/>
           <a class="nav-link" target="_blank" href="./index.html">nossos produtos/serviços</a>
@@ -110,6 +117,7 @@ class App extends React.Component {
           <a class="nav-link" target="_blank" href="./index.html">trabalhe conosco</a>
           <br/>
           <a class="nav-link" target="_blank" href="./index.html">FAQ/perguntas frequentes</a>
+         
           </footSecundario>
           
         </CardFooters>
