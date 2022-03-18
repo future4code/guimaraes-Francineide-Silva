@@ -46,7 +46,7 @@ function App(props) {
           })}
         </select>
         
-        {pokeName && <PokeCard pokemon={pokeName} />}
+        {pokeName && <PokeCard pokeName={pokeName} />}
       </div>
     );
   }

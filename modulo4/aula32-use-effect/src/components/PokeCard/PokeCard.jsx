@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-function PokeCard (props) {
+function PokeCard () {
   
   const [pokemonValue , setPokemonValue] = useState ({}) ;
  
