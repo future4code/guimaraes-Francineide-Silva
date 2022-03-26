@@ -72,3 +72,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 Link do trello: https://trello.com/b/d8nTqtd5/kanban-quadro-modelo
+Link do trello : https://trello.com/b/d8nTqtd5/kanban-quadro-modelo

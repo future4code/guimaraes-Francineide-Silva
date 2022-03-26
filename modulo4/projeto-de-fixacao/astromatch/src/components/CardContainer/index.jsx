@@ -41,7 +41,7 @@ export default function CardContainer () {
         setAnimationSwipe()
       })
       .catch(error => {
-        alert('Não foi possível realizar a solicitação, erro: ' + error.data);
+        alert('Erro na solicitação: ' + error.data);
       });
   };
 
@@ -58,7 +58,7 @@ export default function CardContainer () {
 
     })
     .catch( err => {
-      alert('Não foi possível realizar a solicitação, erro: ' + err.data);
+      alert('Erro na solicitação: ' + err.data);
     })
   };
 
@@ -74,7 +74,7 @@ export default function CardContainer () {
 
     })
     .catch( err => {
-      alert('Não foi possível realizar a solicitação, erro: ' + err.data);
+      alert('Erro na solicitação: ' + err.data);
     })
   };
 
@@ -88,7 +88,7 @@ export default function CardContainer () {
 
     })
     .catch( err => {
-      alert('Não foi possível realizar a solicitação, erro: ' + err.data);
+      alert('Erro na solicitação: ' + err.data);
     })
   };
   

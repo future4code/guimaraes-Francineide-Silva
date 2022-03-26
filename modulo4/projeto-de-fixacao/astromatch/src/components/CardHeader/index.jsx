@@ -7,7 +7,9 @@ import {
 } from './style'
 
 export default function CardHeader (props) {
+
   return(
+    
     <CardHeaderContainer>
       <img src={logo} alt="Logo" />
       <div>
