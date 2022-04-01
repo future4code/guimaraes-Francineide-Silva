@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 
-const CreateTripPage =() => {
+const ErrorPage =() => {
 
     const navigate = useNavigate()
 
@@ -10,23 +10,14 @@ const CreateTripPage =() => {
         navigate('/')
     }
 
-    const goToAdminHomePage =() => {
-        navigate('/admin/trips/list')
-
-    }
-
-
-
     return (
 
         <div>
-
-        <h1>Pagina para criação de distino</h1>
+        <h1>440 Erro , volte para pagina inicial</h1>
         <button onClick={goToHomePage}>Ir Pagina Inicial</button>
-            <button onClick={goToAdminHomePage}>Area de Admin</button>
         </div>
     )
 
 }
 
-export default CreateTripPage;
+export default ErrorPage;

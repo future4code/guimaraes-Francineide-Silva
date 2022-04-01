@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 
-const CreateTripPage =() => {
+const ListTripsPage =() => {
 
     const navigate = useNavigate()
 
@@ -10,23 +10,19 @@ const CreateTripPage =() => {
         navigate('/')
     }
 
-    const goToAdminHomePage =() => {
-        navigate('/admin/trips/list')
-
+    const goToApplicationFormPage =() => {
+        navigate('/trips/application')
     }
 
-
-
     return (
-
         <div>
 
-        <h1>Pagina para criação de distino</h1>
+        <h1>Pagina de lista de viagens</h1>
         <button onClick={goToHomePage}>Ir Pagina Inicial</button>
-            <button onClick={goToAdminHomePage}>Area de Admin</button>
+        <button onClick={goToApplicationFormPage}>Ir Para Formulario</button>
         </div>
     )
 
 }
 
-export default CreateTripPage;
+export default ListTripsPage;

@@ -1,13 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Routes from './routes/Routes';
+
 
 function App() {
   return (
-    <div className="App">
-      <h1>LABEX</h1>
-      <button>Ver Viagens</button>
-      <button>Area de Admin</button>
-    </div>
+    <Routes/>
+    
   );
 }
 
