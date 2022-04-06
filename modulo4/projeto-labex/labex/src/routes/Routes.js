@@ -17,7 +17,7 @@ const Router = () => {
         <BrowserRouter>
 
             <Routes>
-                <Route  index element ={ <HomePage/>}/>
+                <Route  index path = '/'  element ={ <HomePage/>}/>
                 <Route path ='/trips/list' element = { <ListTripsPage/>} />
                 <Route path = '/trips/application'element = {<ApplicationFormPage/>} />
                 <Route path= '/login' element = {<LoginPage/>} />

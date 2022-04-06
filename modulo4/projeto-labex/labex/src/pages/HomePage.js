@@ -1,5 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { goToListTripsPage } from "../routes/coordinator";
+import { goToAdminHomePage } from "../routes/coordinator";
 
 
 
@@ -8,21 +10,14 @@ const HomePage =() => {
 
     const navigate = useNavigate()
 
-    const goToAdminHomePage = () => {
-        navigate('/login')
-    }
-
-    const goToListTripsPage = () => {
-        navigate('/trips/list')
-    }
-
+    
     return (
 
 
-        <div className="App">
+        <div >
            <h1>LABEX</h1>
-            <button onClick={goToListTripsPage}>Ver Viagens</button>
-            <button onClick={goToAdminHomePage}>Area de Admin</button>
+            <button onClick={() =>goToListTripsPage(navigate)}>Ver Viagens</button>
+            <button onClick={() => goToAdminHomePage (navigate)}>Area de Admin</button>
        </div>
     )
 
