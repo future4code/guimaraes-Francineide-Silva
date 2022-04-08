@@ -1,25 +1,156 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { useParams,useNavigate } from 'react-router-dom';
+import {useForm} from "../hooks/useForm";
+import styled from 'styled-components';
+import axios from "axios";
+import Header from './Header';
+import {Countries} from "./Countries"
 
 
 
-const ApplicationFormPage =() => {
 
-    const navigate = useNavigate()
+const ContainerForm= styled.div`
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  h1{
+    color:white;
+    
+  }
+  height:100vh;
+ `
+const Form= styled.form`
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  margin:2em;
+`
+const Input= styled.input`
+  padding: 10px;
+  width: 300px;
+  margin: 0.5em;
+`
 
-    const goToListTripsPage = () => {
-        navigate('/trips/list')
+const Select= styled.select`
+  padding: 10px;
+  width: 320px;
+  margin: 0.5em;
+  
+`
+const ButtonForm=styled.button`
+background-color: rgba(0,0,0,0.8);
+height:70px;
+margin-top:1.5em;
+color:white;
+padding:0.5em;
+font-family: 'Audiowide', cursive;
+border-radius:30px;   
+font-size: 20px;
+`
+const ApplicationFormPage =(props) => {
+
+
+  const navigate=useNavigate()
+
+  
+
+  const { id } = useParams()
+  const { form, onChange } = useForm({ name: "", age: "", profession: "",country:"",applicationText:"" });
+ 
+    const handleInputChange = (event) => {
+      const { value, name } = event.target;
+  
+      onChange(value, name);
+    };
+  
+    const onSubmitForm = (event) => {
+      event.preventDefault();
+      submitForm()
+      
+    };
+
+
+  const submitForm = () => {
+    
+    axios
+        .post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/francineide-silva-guimaraes/trips/${id}/apply`,form)
+        .then((response) => {
+         alert("Obrigada por se inscrver, estamos na torcida!", response.data.message)
+         
+        })
+        .catch(e => {
+            alert ("Houve um Erro ")
+        })
     }
-
+  
+    
+  
     return (
-
-        <div>
-
-        <h1>Formulario de inscrição</h1>
-        <button onClick={goToListTripsPage}>Ir Lista de Viagens</button>
-        </div>
-    )
-
+      <div>
+        <Header/>
+        <ContainerForm>
+        <h1>Formulário de Inscrição</h1>
+        <Form onSubmit={onSubmitForm}>
+          <Input
+            value={form.name}
+            placeholder={"Nome"}
+            onChange={handleInputChange}
+            name={"name"}
+            type={"text"}
+            pattern={"(.*[a-z]){3}"}
+            required
+          />
+          
+          <Input
+            value={form.age}
+            placeholder={"Idade"}
+            onChange={handleInputChange}
+            name={"age"}
+            type={"number"}
+            min="18"
+            required
+          />
+          <Input
+            value={form.profession}
+            placeholder={"Profissão"}
+            onChange={handleInputChange}
+            name={"profession"}
+            type={"text"}
+            pattern={"(.*[a-z]){10}"}
+            required
+          />
+          <Select placeholder={"País"} 
+            onChange={handleInputChange} 
+            value={form.country}
+            name={"country"}
+            type={"text"}
+            required>
+            <Countries/>
+          </Select>
+          
+           <Input
+            value={form.applicationText}
+            placeholder={"Por que quer se candidatar?"}
+            onChange={handleInputChange}
+            name={"applicationText"}
+            type={"text"}
+            pattern={"(.*[a-z]){30}"}
+            required
+          />
+          <ButtonForm onClick={onSubmitForm}>Inscrever-se</ButtonForm>
+        </Form>
+        
+        </ContainerForm>
+      </div>
+      
+    
+  
+  
+  
+    
+  );
 }
 
 export default ApplicationFormPage;
+
+

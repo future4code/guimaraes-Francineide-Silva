@@ -1,47 +1,91 @@
-import React, { useState } from 'react'
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate} from "react-router-dom"
+import styled from "styled-components";
+import Header from "./Header";
 
-const LoginPage = () => {
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+const ContainerForm= styled.div`
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  h1{
+    color:white;
+    margin-top:80px;
+  }
+  height:100vh;
+ `
+const Input= styled.input`
+  padding: 10px;
+  width: 300px;
+  margin: 0.5em;
+`
+const ButtonForm=styled.button`
+background-color: rgba(0,0,0,0.8);
+height:70px;
+margin-top:1.5em;
+color:white;
+padding:0.5em;
+font-family: 'Audiowide', cursive;
+border-radius:30px;   
+font-size: 20px;
+`
+ const LoginPage = ()=> {
 
-  const navigate = useNavigate()
+  const [admEmail, setAdmEmail] = useState("");
+  const [admPassword, setAdmPassword] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+
+
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    navigate("/admin/trips/list");
+  }
+  
+}, [navigate]);
 
   const handleEmail = (event) => {
-    setEmail(event.target.value)
-  }
+    setAdmEmail(event.target.value);
+  };
 
   const handlePassword = (event) => {
-    setPassword(event.target.value)
-  }
+    setAdmPassword(event.target.value);
+  };
 
-  const login = () => {
-    
-
+  const loginPage = () => {
     const body = {
-      email: email,
-      password: password
-    }
+      email: admEmail,
+      password: admPassword
+    };
 
     axios
-      .post('https://us-central1-labenu-apis.cloudfunctions.net/labeX/francineide-silva-guimaraes/login', body)
-      .then(res => {
-        
-        localStorage.setItem('token', res.data.token)
-        navigate('/login')
+      .post(
+        "https://us-central1-labenu-apis.cloudfunctions.net/labeX/francineide-silva-guimaraes/login",
+        body
+      )
+      .then((res) => {
+        localStorage.setItem("token", res.data.token);
+        navigate("/admin/trips/list");
       })
-      .catch(err => alert('Deu ruim: ', err.response))
-
-  }
+      .catch((err) => {
+        alert("Erro:",  err);
+      });
+  };
 
   return (
     <div>
-      <input placeholder="E-mail" value={email} onChange={handleEmail} />
-      <input placeholder="Senha" value={password} onChange={handlePassword} />
-      <button onClick={login}>Entrar!</button>
+      <Header/>
+      <ContainerForm>
+        <h1>Login</h1>
+        <Input value={admEmail} onChange={handleEmail} type="email" placeholder="E-mail"/>
+        <Input value={admPassword} onChange={handlePassword} type="password" placeholder="Senha"/>
+        <ButtonForm onClick={() => loginPage (navigate)}>Fazer login</ButtonForm>
+        </ContainerForm>
     </div>
+    
   )
 }
 export default LoginPage;
