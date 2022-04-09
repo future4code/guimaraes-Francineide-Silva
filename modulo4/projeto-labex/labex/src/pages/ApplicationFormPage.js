@@ -52,6 +52,10 @@ const ApplicationFormPage =(props) => {
 
   const navigate=useNavigate()
 
+  const goToHomePage =() => {
+    navigate('/')
+  }
+
   
 
   const { id } = useParams()

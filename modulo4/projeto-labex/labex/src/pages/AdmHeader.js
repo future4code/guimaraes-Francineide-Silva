@@ -6,12 +6,12 @@ import { goToHomePage } from "../routes/coordinator";
 
 const HeaderContainer=styled.div`
 display:flex;
-justify-content: space-around;
+justify-content: center;
 p{
   color:white;
   font-size: 100px;
   font-family: 'Audiowide', cursive;
-}
+  }
 `
 const ButtonHeader=styled.button`
 background-color: black;
@@ -33,6 +33,8 @@ const AdmHeader =() => {
 
     const logout = () => {
         window.localStorage.clear();
+        navigate("/")
+
         
       }
 
@@ -42,7 +44,7 @@ const AdmHeader =() => {
       <p>LabeX</p>
         <ButtonHeader onClick={() => goToHomePage (navigate)}> Home </ButtonHeader>
         <ButtonHeader onClick={() => goToCreateTripPage(navigate)}> Criar Viagens</ButtonHeader>
-        <ButtonHeader onClick={()=>logout(navigate)}> Fazer Logout</ButtonHeader>
+        <ButtonHeader onClick={logout}> Fazer Logout</ButtonHeader>
     </ HeaderContainer>
     )
 

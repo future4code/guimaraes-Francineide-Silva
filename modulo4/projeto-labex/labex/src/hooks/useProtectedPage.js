@@ -11,7 +11,7 @@ export const useProtectedPage = () => {
       alert ('USER NÃO ESTÁ LOGADE')
       navigate('/')
     }
-  }, [navigate])
+  }, [useNavigate])
 }
 
  

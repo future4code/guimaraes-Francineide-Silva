@@ -32,7 +32,7 @@ const Card = styled.div`
    
  }
 `
-const AdminHomePage =() =>{
+function AdminHomePage () {
 
     useProtectedPage();
   
@@ -53,10 +53,10 @@ const AdminHomePage =() =>{
   } 
 
 
-    const list= getSpaceTrip && getSpaceTrip.trips.map((trip,id) =>{
+    const list= getSpaceTrip && getSpaceTrip.trips.map((trip,i) =>{
 
       return (< Card>
-         <img src={`https://picsum.photos/200/200?a=${id}]`}/>
+         <img src={`https://picsum.photos/200/200?a=${i}]`}/>
           <h4 key={trip.id}>{ trip.name}</h4>
           <p>planeta: {trip.planet}</p>
           <button onClick={()=>{goToTripDetailsPage(trip.id)}}> Ver detalhes</button>

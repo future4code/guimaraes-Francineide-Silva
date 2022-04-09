@@ -1,7 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { goToListTripsPage } from "../routes/coordinator";
-import { goToAdminHomePage } from "../routes/coordinator";
 import styled from "styled-components";
 import Header from "./Header";
 
@@ -17,10 +14,18 @@ const TextContainer=styled.div`
   padding: 2em;
   text-align:justify;
   border:solid 2px;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.2);
   p{
     color:white;
   }
+`
+const TextPrincipal =styled.p `
+  display:flex;
+ justify-content:center;
+ font-family: 'Audiowide', cursive;
+ color: black;
+ font-size: 40px
+
 `
 
 
@@ -35,10 +40,10 @@ const HomePage =() => {
         <div >
             <Header/>
             <HomeContainer>
-                <tesxtContainer>
-                    <p> lua</p>
-                    <p>sol </p>
-                </tesxtContainer>
+                <TextContainer>
+                    <TextPrincipal> Venha conhecer a Labex sua primeira agencia espacial </TextPrincipal>
+                    
+                </TextContainer>
             </HomeContainer>
            
        </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import Routes from './routes/Routes';
-import styled from "styled-components"
-import spaceship from './img/spaceship-3827533_1920.jpg'
+import styled from "styled-components";
+import galaxia from './img/galaxia-roxa.jpg';
 
 
 const AppContainer=styled.div`
@@ -9,7 +9,7 @@ bottom: 0px;
 margin:0px;
 width:100vw;
 height:100%;
-background-image: url(${spaceship});
+background-image: url(${galaxia});
 background-repeat: no-repeat;
 background-size:cover;
 `
