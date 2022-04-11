@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from 'styled-components'
-import AdmHeader from "./AdmHeader";
 import { useParams, useNavigate } from "react-router-dom";
 import { useProtectedPage } from "../hooks/useProtectedPage";
+import AdminHomePage from "./AdminHomePage";
+
 
 const DetailContainer = styled.div`
  display:flex;
@@ -90,7 +91,7 @@ function TripDetailsPage() {
             alert("Ahhhhh, tente novamente!")
           }
           
-            alert (response)
+           
         })
         .catch(err => {
             alert ("Erro:",  err)
@@ -115,7 +116,7 @@ function TripDetailsPage() {
 
   return (
   <div>
-      <AdmHeader/>
+      <AdminHomePage/>
       <DetailContainer>
         <Card>
           <h2>Detalhes da Viagen</h2>

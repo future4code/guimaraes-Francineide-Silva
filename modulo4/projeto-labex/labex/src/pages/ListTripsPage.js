@@ -2,7 +2,9 @@ import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
 import { useRequestData } from "../hooks/useRequestData";
+import { useProtectedPage } from '../hooks/useProtectedPage';
 import Header from './Header'
+
 
 const ContainerList= styled.div`
   display:grid;
@@ -32,6 +34,8 @@ const Card = styled.div`
 `
 
 function ListTripsPage() {
+
+  useProtectedPage();
   
   const getSpaceTrip = useRequestData(
     "https://us-central1-labenu-apis.cloudfunctions.net/labeX/francineide-silva-guimaraes/trips", undefined
@@ -41,22 +45,22 @@ function ListTripsPage() {
   
   const navigate = useNavigate()
 
-  const goToApplication=(id)=>{
-   navigate(`/applicationForm/${id}`)
-    
+  const goToTripDetailsPage=(id)=>{
+    navigate(`/admin/trips/${id}`)
   } 
 
+
   
-    const list= getSpaceTrip && getSpaceTrip.trips.map((trip,id) =>{
+    const list= getSpaceTrip && getSpaceTrip.trips.map((trip,i) =>{
       
       return (< Card>
-         <img src={`https://picsum.photos/200/200?a=${id}]`}/>
+         <img src={`https://picsum.photos/200/200?a=${i}]`}/>
           <h4 key={trip.id}>{ trip.name}</h4>
           <p >{ trip.description}</p>
           <p>planeta: {trip.planet}</p>
           <p>duração: {trip.durationInDays}</p>
           <p>Data: {trip.date}</p>
-          <button onClick={()=>{goToApplication(trip.id)}}>Quero ir</button>
+          <button onClick={()=>{goToTripDetailsPage(trip.id)}}>Quero ir</button>
       </ Card>
       );
     })

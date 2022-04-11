@@ -83,7 +83,7 @@ const ApplicationFormPage =(props) => {
          
         })
         .catch(e => {
-            alert ("Houve um Erro ")
+            alert ("Houve um Erro ", e)
         })
     }
   

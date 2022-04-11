@@ -1,80 +1,53 @@
-import React from 'react'
-import styled from 'styled-components'
-import { useRequestData } from "../hooks/useRequestData";
-import AdmHeader from './AdmHeader';
-import { useNavigate } from 'react-router-dom';
-import { useProtectedPage } from '../hooks/useProtectedPage';
-import { goToCreateTripPage } from '../routes/coordinator';
-import { goToTripDetailsPage } from '../routes/coordinator';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import { goToCreateTripPage } from "../routes/coordinator";
+import { goToHomePage } from "../routes/coordinator";
 
-const ContainerList= styled.div`
-   display:grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  width:100vw;
- `
-const Card = styled.div`
- width:200px;
- margin:1em;
- border:solid 2px;
- padding:1em;
- background-color: rgba(0,0,0,0.5);
- p,h4{
-   color:white;
- }
- 
- button{
-   width:200px;
-   padding:0.5em;
-   background-color:gray;
-   font-size: 20px;
-   bottom:0px;
-   margin: 30px 0px;
-   
- }
+const HeaderContainer=styled.div`
+display:flex;
+justify-content: space-around;
+p{
+  color:white;
+  font-size: 100px;
+  font-family: 'Audiowide', cursive;
+  }
 `
-function AdminHomePage () {
-
-    useProtectedPage();
-  
-  const getSpaceTrip = useRequestData(
-    "https://us-central1-labenu-apis.cloudfunctions.net/labeX/francineide-silva-guimaraes/trips", undefined
-    
-  );
-  
-
-  const navigate=useNavigate()
-
-  const goToTripDetailsPage=(id)=>{
-    navigate(`/admin/trips/${id}`)
-  } 
-
-  const goToCreateTripPage=(id)=>{
-      navigate(`/admin/trips/create`)
-  } 
+const ButtonHeader=styled.button`
+background-color: black;
+height:70px;
+margin-top:1.5em;
+color:white;
+padding:0.5em;
+font-family: 'Audiowide', cursive;
+border-radius:30px;   
+font-size: 20px;
+`
 
 
-    const list= getSpaceTrip && getSpaceTrip.trips.map((trip,i) =>{
 
-      return (< Card>
-         <img src={`https://picsum.photos/200/200?a=${i}]`}/>
-          <h4 key={trip.id}>{ trip.name}</h4>
-          <p>planeta: {trip.planet}</p>
-          <button onClick={()=>{goToTripDetailsPage(trip.id)}}> Ver detalhes</button>
-      </ Card>
-      );
-    })
 
-    return(
-    <div>
-      <AdmHeader/>
-            <ContainerList>
-                {list}
-            </ContainerList>
-            
-    </div>
-    
-    );
-  
+const AdminHomePage =() => {
+
+    const navigate = useNavigate()
+
+    const logout = () => {
+        window.localStorage.clear();
+        navigate("/")
+
+        
+      }
+
+    return (
+
+        < HeaderContainer>
+      <p>LabeX</p>
+        <ButtonHeader onClick={() => goToHomePage (navigate)}> Home </ButtonHeader>
+        <ButtonHeader onClick={() => goToCreateTripPage(navigate)}> Criar Viagens</ButtonHeader>
+        <ButtonHeader onClick={logout}> Fazer Logout</ButtonHeader>
+    </ HeaderContainer>
+    )
+
 }
 
 export default AdminHomePage;

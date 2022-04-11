@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 import {useForm} from '../hooks/useForm'
 import styled from 'styled-components'
 import axios from "axios";
-import AdmHeader from './AdmHeader'
 import { useProtectedPage} from "../hooks/useProtectedPage"
+import { goToHomePage } from "../routes/coordinator";
+import AdminHomePage from "./AdminHomePage";
 
 
 const ContainerForm= styled.div`
@@ -46,6 +47,10 @@ font-size: 20px;
 function CreateTripPage() {
  
   const navigate=useNavigate()
+
+  const goToHomePage=()=>{
+    navigate('/')
+  } 
   
   useProtectedPage();
   
@@ -74,7 +79,7 @@ function CreateTripPage() {
         .post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/francineide-silva-guimaraes/trips`,form,axiosConfig)
         .then((response) => {
          alert("Viagem Criada com suceso!")
-         console.log("OK", response)
+        
         })
         .catch(err => {
             alert ("Erro" ,err)
@@ -85,7 +90,7 @@ function CreateTripPage() {
   
   return (
     <div>
-      <AdmHeader/>
+      <AdminHomePage/>
       <ContainerForm>
         <h1>Criar Viagem </h1>
         <Form onSubmit={onSubmitForm}>
@@ -143,7 +148,7 @@ function CreateTripPage() {
             pattern={"(.*[a-z]){30}"}
             required
           />
-          <ButtonForm onClick={() => onSubmitForm(navigate)}>Inscrever-se</ButtonForm>
+          <ButtonForm onClick={onSubmitForm}>Inscrever-se</ButtonForm>
         </Form>
         
       

@@ -41,7 +41,7 @@ const HomePage =() => {
             <Header/>
             <HomeContainer>
                 <TextContainer>
-                    <TextPrincipal> Venha conhecer a Labex sua primeira agencia espacial </TextPrincipal>
+                    <TextPrincipal> Venha conhecer a Labex sua primeira agencia de viagens espacial </TextPrincipal>
                     
                 </TextContainer>
             </HomeContainer>
