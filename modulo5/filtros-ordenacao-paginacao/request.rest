@@ -1,0 +1,25 @@
+get http://localhost:3003/test
+
+###
+
+// filtro
+
+get http://localhost:3003/localhost:3003/user?name=Luciano
+
+###
+
+// ordenação
+get http://localhost:3003/
+
+###
+// paginação
+
+get http://localhost:3003/
+
+###
+// todos juntos
+
+get http://localhost:3003/user
+
+
+
