@@ -1,0 +1,22 @@
+POST http://localhost:3003/user/create
+Content-Type: application/json
+
+{
+    "name": "Juju",
+    "email": "Juju@email.com",
+    "password": "atder"
+}
+
+
+###
+
+POST http://localhost:3003/movie/create
+Content-Type: application/json
+
+{
+    "title": "xuxa",
+   "description": "filem besta",
+   " duration_in_minutes": "12 min", 
+   "year_of_release": "1990"
+
+}
