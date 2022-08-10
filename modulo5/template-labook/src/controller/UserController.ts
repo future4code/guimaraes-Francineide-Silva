@@ -7,13 +7,15 @@ const userBusiness =new UserBusiness()
 export class UserController {
 
     async create (req: Request, res: Response): Promise <void>{
+
         try {
 
+            let message = "Usuario criado com sucesso!"
             const {name, email, password} =req.body
 
             await userBusiness.create({name, email, password})
 
-            res.status(201).send({ message: "Ùsuarioa criado com Sucesso"})
+            res.status(201).send({ message})
             
         } catch (error:any) {
 

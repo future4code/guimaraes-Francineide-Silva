@@ -5,6 +5,7 @@ export enum POST_TYPES {
  
 
  export class post  {
+    static map: any
 
     constructor (
 

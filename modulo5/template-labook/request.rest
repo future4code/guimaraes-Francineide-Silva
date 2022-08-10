@@ -12,3 +12,18 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3003/user
+
+
+###
+
+POST http://localhost:3003/post/create
+Content-Type: application/json
+
+{
+    
+            "photo":"casa",
+            "description":"casa amarela",
+            "type": "normal",
+            "authorId": "6cd75b33-633f-44e9-ad3d-8f88174012ae" 
+            
+}
