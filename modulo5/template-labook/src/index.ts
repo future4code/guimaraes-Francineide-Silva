@@ -164,5 +164,5 @@ import {postRouter} from "./routes/postRouter"
 
 app.use("/user",  userRouter)
 
-app.post("/post", postRouter)
+app.use("/post", postRouter)
 

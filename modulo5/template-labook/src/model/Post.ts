@@ -4,7 +4,7 @@ export enum POST_TYPES {
  }
  
 
- export class post  {
+ export class Post  {
     static map: any
 
     constructor (
@@ -68,3 +68,23 @@ export enum POST_TYPES {
     }
  }
 
+export interface PostInputDTO {
+
+
+    photo: string,
+    description: string,
+    type: POST_TYPES,
+    createdAt: Date,
+    authorId: string
+
+}
+
+export type post = {
+    
+    id: string,
+    photo: string,
+    description: string,
+    type: POST_TYPES,
+    createdAt: Date,
+    authorId: string
+}

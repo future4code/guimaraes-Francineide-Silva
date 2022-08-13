@@ -1,5 +1,6 @@
 import {Request, Response} from 'express'
 import {PostBusiness} from '../business/PostBusiness'
+import {PostInputDTO} from '../model/Post'
 
 
 const postBusiness = new PostBusiness()
@@ -9,13 +10,20 @@ export class PostController {
     async create(req: Request, res: Response): Promise<void> {
 
         try {
-            let message = "Success!"
+            let message = "Post criado com sucesso!"
 
-            const { photo, description, type, authorId } = req.body
+            const { photo, description, type,createdAt, authorId } = req.body
+
+            const post: PostInputDTO ={
+                photo,
+                description,
+                type,
+                createdAt,
+                authorId
+            }
 
 
-
-            await postBusiness.create({ photo, description, type, authorId })
+            await postBusiness.create(post)
 
 
 
@@ -27,20 +35,6 @@ export class PostController {
             res.send({ message })
         }
     }
-
-    // async findAll(req: Request, res: Response): Promise<void> {
-
-    //     try {
-
-    //         const newPost = await postBusiness.findAll()
-    //         res.status(201).send({newPost})
-            
-    //     } catch (error:any) {
-    //         res.status(400).send(error.sqlMessage || error.message)
-            
-    //     }
-
-    // }
 
 }
 

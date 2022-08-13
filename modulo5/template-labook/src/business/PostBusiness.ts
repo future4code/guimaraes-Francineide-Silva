@@ -1,33 +1,57 @@
 import { PostDatabase } from "../data/PostDatabase";
-import {post} from '../types/Post'
-import {v4 as generateId} from 'uuid'
+import {post, PostInputDTO} from '../model/Post'
+import {generateId} from '../servces/generateId'
+import { invalidPhoto , invalidDescription, invalidCreatedAt, invalidType,} from "../error/CustomError";
+
+
 
 const postDatabade = new PostDatabase ()
 
 export class PostBusiness {
 
-    async create ({photo, description, type, authorId}:any): Promise <void>{
 
-        if (!photo || !description || !type || !authorId){
-            throw new Error("Necessario as informaçoes(photo, description, type, authorId)")
+
+    async create (input:PostInputDTO): Promise <void>{
+
+        const{photo, description, type, authorId} = input
+
+        if (!photo ){
+
+            throw new invalidPhoto()
+
         }
 
-        const postId: string = generateId()
+        if (!description ){
 
-        await postDatabade.create({
-            id:postId,
+            throw new invalidDescription()
+            
+        }
+        if (!type ){
+
+            throw new invalidType()
+            
+        }
+        
+
+        const id = generateId()
+        const createdAt = new Date()
+
+        const post: post ={
+
+            id,
             photo,
             description,
             type,
-            author_id: authorId
-        })
+            createdAt,
+            authorId
+
+
+        }
+
+        await postDatabade.create(post)
 
     }
 }
 
-//     async findAll():Promise<post[]> {
-//         const result = await postDatabade.findAll()
-//         return result
 
-//     }
-// 
+

@@ -1,4 +1,4 @@
-export class authenticationData {
+export class AuthenticationData {
 
     constructor (
 
@@ -14,4 +14,11 @@ export class authenticationData {
     
  }
 
- 
+ export interface AuthenticationDataInputDTO{
+    id: string
+ }
+
+ export type authenticationData = {
+
+    id: string,
+ }

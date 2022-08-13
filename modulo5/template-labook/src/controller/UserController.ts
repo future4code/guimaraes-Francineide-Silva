@@ -1,5 +1,6 @@
 import {Request, Response} from 'express'
 import {UserBusiness} from '../business/UserBusiness'
+import {userInputDIO} from '../model/User'
 
 
 const userBusiness =new UserBusiness()
@@ -10,10 +11,20 @@ export class UserController {
 
         try {
 
-            let message = "Usuario criado com sucesso!"
+           
+            
             const {name, email, password} =req.body
 
-            await userBusiness.create({name, email, password})
+            let message = "Usuário cadastrado com sucesso"
+
+            const user : userInputDIO ={
+
+                name,
+                email,
+                password
+            }
+
+            await userBusiness.create(user)
 
             res.status(201).send({ message})
             
@@ -24,12 +35,12 @@ export class UserController {
         }
     }
 
-    async findAll(req: Request, res: Response): Promise<void> {
+    async getAllUserControlles(req: Request, res: Response): Promise<void> {
 
         try {
 
-            const CadastroUsuario = await userBusiness.findAll()
-            res.status(201).send({CadastroUsuario})
+            const users = await userBusiness.getUserBusiness()
+            res.status(201).send(users)
             
         } catch (error:any) {
             res.status(400).send(error.sqlMessage || error.message)
@@ -38,4 +49,4 @@ export class UserController {
 
     }
 
-}
+} 

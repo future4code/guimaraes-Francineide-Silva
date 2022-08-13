@@ -1,31 +1,55 @@
 import { UserDatabase } from "../data/UserDatabase";
-import {User} from '../types/User'
-import {v4 as generateId} from 'uuid'
+import { User, user, userInputDIO } from '../model/User'
+import { invalidName, invalidEmail, invalidPassword, invalidUser } from '../error/CustomError'
+import { generateId } from '../servces/generateId'
 
-const userDatabade = new UserDatabase ()
+
+const userDatabade = new UserDatabase()
 
 export class UserBusiness {
 
-    async create ({name,email,password}:any): Promise <void>{
+    async create(input: userInputDIO): Promise<void> {
 
-        if (!name || !email || !password){
-            throw new Error("Necessario as informaçoes(Nome, E-mail e Senha)")
+        const { name, email, password } = input
+
+        if (!name) {
+
+            throw new invalidName()
+        }
+
+        if (!email) {
+
+            throw new invalidEmail()
+        }
+
+        if (!password) {
+
+            throw new invalidPassword()
         }
 
         const id = generateId()
 
-        await userDatabade.create({
+        const user: user = {
             id,
             name,
             email,
             password,
-        })
+
+        }
+
+        await userDatabade.create(user)
 
     }
 
-    async findAll():Promise<User[]> {
-        const result = await userDatabade.findAll()
-        return result
+    async getUserBusiness (): Promise<User[]> {
+        
+        const users  = await userDatabade.getUserAll()
+
+        if(users.length< 1){
+            throw new invalidUser()
+        }
+
+        return users
 
     }
 }
