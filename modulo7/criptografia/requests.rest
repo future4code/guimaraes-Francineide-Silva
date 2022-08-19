@@ -1,0 +1,38 @@
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+    "name":"Laryssa",
+    "nickname":"lara",
+    "email": "lara@gmail.com",
+    "password":"penelope"
+}
+
+###
+
+GET http://localhost:3003/user/all
+
+###
+
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+    "email":"juliana@gmail.com",
+    "password": "casanova"
+}
+
+###
+
+PUT http://localhost:3003/user/edit
+Content-Type: application/json
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc4ZjgyNzAzLWQ4ZjctNDg1Ny1hODRjLTk5NWM2ZmM2ZDlkMSIsImlhdCI6MTY2MDg3MTY3MCwiZXhwIjoxNjYwODc1MjcwfQ.a6ryHtqgnX8drDO_8OJe7eOTlG-5qhcSk-tI5L7Lamc
+
+
+
+{
+    "name":"Lena",
+    "nickname":"leninha",
+    "email":"lena@gmail.com"
+
+}
