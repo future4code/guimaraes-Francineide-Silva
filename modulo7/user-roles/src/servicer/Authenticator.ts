@@ -1,8 +1,8 @@
 import { AuthenticationData } from "../model/types";
 import * as jwt from 'jsonwebtoken'
 
-export class Authenticatior{
-
+export class Authenticator{
+   
     generateToken = (payload :AuthenticationData): string =>{
         const token = jwt.sign(
             payload,
@@ -19,4 +19,5 @@ export class Authenticatior{
         ) as AuthenticationData
         return result
     }
+  
 }

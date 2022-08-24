@@ -1,3 +1,16 @@
 GET http://localhost:3003/
 
 ###
+
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+    "name": "Francineide",
+    "nickname": "flor",
+    "email": "flor@hotmail.com",
+    "password":"neide2022",
+    "role": "ADMIN"
+
+
+}
