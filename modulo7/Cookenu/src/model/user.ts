@@ -3,19 +3,22 @@ export type user = {
     email: string
     password: string
     name: string
+    role: string
     
  }
  
  export interface UserInputDTO {
     name: string,
     email: string,
-    password: string
+    password: string,
+    role: string
+
  }
  
  export interface EditUserInputDTO {
     name: string,
     email: string,
-    token: string
+    id: string
  }
  
  export interface EditUserInput {
