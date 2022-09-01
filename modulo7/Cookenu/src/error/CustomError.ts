@@ -33,3 +33,6 @@ export class Unauthorized extends CustomError{
         super(401, "Usuário não autorizado")
     }
 }
+
+///////////// Receitas /////////
+
