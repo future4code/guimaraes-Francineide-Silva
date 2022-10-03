@@ -20,7 +20,7 @@ export class UserController {
           role:req.body.role,
         }
       
-        const token = await this.userBusiness.signup(input);
+        const token = await this.userBusiness.createUser(input);
   
         res.status(201).send({ message: "Usuário criado!", token });
       } catch (error: any) {
@@ -42,20 +42,21 @@ export class UserController {
         }
       }
 
-      public editUser = async (req: Request, res: Response) => {
-        try {
-          const token = req.headers.authorization as string
-          const input :EditUserInputDTO = {
-            name: req.body.name, 
-            nickname: req.body.nickname,
-            id: req.params.id
-          }
+    //   public editUser = async (req: Request, res: Response) => {
+    //     try {
+    //       const token = req.headers.authorization as string
+    //       const input :EditUserInputDTO = {
+    //         name: req.body.name, 
+    //         nickname: req.body.nickname,
+    //         id: req.params.id
+    //       }
           
-          await this.userBusiness.editUser(input, token)
+    //       await this.userBusiness.editUser(input,token)
 
-          res.status(200).send({message: "Usuário Alterado com sucesso" })
+    //       res.status(200).send({message: "Usuário Alterado com sucesso" })
           
-        } catch (error: any) {
-          res.status(400).send(error.message);
-        }
-    }
+    //     } catch (error: any) {
+    //       res.status(400).send(error.message);
+    //     }
+    // }
+  }

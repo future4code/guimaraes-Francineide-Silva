@@ -3,6 +3,9 @@ import {user, EditUserInput} from "../model/user"
 import { CustomError } from "../error/CustomError";
 
 export class UserDatabase extends BaseDatabase{
+  static getUserById(id: string) {
+    throw new Error("Method not implemented.");
+  }
     private static TABLE_NAME = "Intro_Auth"
     public insertUser =async (user:user)=>{
         try {
@@ -28,7 +31,7 @@ export class UserDatabase extends BaseDatabase{
             .where({ id: user.id })
             .into(UserDatabase.TABLE_NAME);
         } catch (error: any) {
-          throw new CustomError(400, error.sqlMessage);
+          throw new CustomError(400, error.message);
         }
       }
     
@@ -39,7 +42,7 @@ export class UserDatabase extends BaseDatabase{
             .where({email})
           return result[0]
         } catch (error: any) {
-          throw new CustomError(400, error.sqlMessage)
+          throw new CustomError(400, error.message)
         }
       }
       
@@ -50,7 +53,7 @@ export class UserDatabase extends BaseDatabase{
             .where({id})
           return result[0]
         } catch (error: any) {
-          throw new CustomError(400, error.sqlMessage)
+          throw new CustomError(400, error.message)
         }
       }
     
