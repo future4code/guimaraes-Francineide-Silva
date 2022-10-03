@@ -16,3 +16,7 @@ Content-Type: application/json
     "email":"neide@gmail.com",
     "password":"neidet20"
 }
+
+###
+
+GET http://localhost:3003/
